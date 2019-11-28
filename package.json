@@ -63,7 +63,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "stylelint './src/*.js'",
+      "stylelint",
       "eslint --fix",
       "git add"
     ]
