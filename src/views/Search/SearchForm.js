@@ -10,7 +10,7 @@ const SearchForm = () => {
   const { push } = useHistory();
   const { pathname, search } = useLocation();
 
-  const { search: searchText } = parse(search);
+  const { search: searchText = '' } = parse(search);
 
   const changeSearch = useCallback(
     /**
@@ -23,7 +23,11 @@ const SearchForm = () => {
     }, [push, pathname],
   );
   return (
-    <input onChange={changeSearch} value={searchText} />
+    <input
+      data-testid="fiuzzy-search-input"
+      onChange={changeSearch}
+      value={searchText}
+    />
   );
 };
 
