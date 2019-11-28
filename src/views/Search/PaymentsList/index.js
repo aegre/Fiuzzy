@@ -14,7 +14,9 @@ const PaymentsList = ({ payments, loading }) => {
     <ul>
       {
         payments.map((payment) => (
-          <li key={payment.date}>{payment.amount}</li>
+          <li key={`${payment.date}${payment.cardLastFour}`}>
+            {payment.amount}
+          </li>
         ))
       }
     </ul>

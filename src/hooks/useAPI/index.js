@@ -5,12 +5,14 @@ import { useReducer, useCallback } from 'react';
 // Components
 import apiReducer, { startRequest, onRequestComplete, onRequestError } from './reducer';
 
+const defaultFormatFunction = (data) => data;
+
 /**
  * Hook that manages the state of an API request
  * @param {function} endPoint This should be a pr
  * @param {*} [initialValue] The initial value
  */
-const useAPI = (endPoint, initialValue = {}, formatFunction = (data) => data) => {
+const useAPI = (endPoint, initialValue = {}, formatFunction = defaultFormatFunction) => {
   const initialState = {
     data: initialValue,
     loading: LOADING_STATES.initial,
@@ -31,7 +33,7 @@ const useAPI = (endPoint, initialValue = {}, formatFunction = (data) => data) =>
     } catch (err) {
       dispatch(onRequestError(err));
     }
-  }, [endPoint, dispatch]);
+  }, [endPoint, dispatch, formatFunction]);
 
   return {
     data,
