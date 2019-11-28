@@ -26,7 +26,7 @@ const useAPI = (endPoint, initialValue = {}) => {
   const call = useCallback(async (params) => {
     try {
       dispatch(startRequest);
-      const responseData = await endPoint(params);
+      const { data: responseData } = await endPoint(params);
       dispatch(onRequestComplete(responseData));
     } catch (err) {
       dispatch(onRequestError(err));

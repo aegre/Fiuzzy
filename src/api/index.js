@@ -7,11 +7,11 @@ const makeRequest = (options) => axios({
 });
 
 const API = {
-  getList: () => {
+  getList: () => (
     makeRequest({
       url: '/bins/rdlcq',
-    });
-  },
+    })
+  ),
 };
 
 export default API;

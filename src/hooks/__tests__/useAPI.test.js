@@ -32,7 +32,7 @@ beforeEach(jest.clearAllMocks);
 describe('hooks.useAPI', () => {
   test('Is calling the API with the call function', async () => {
     const expectedResult = { name: 'pusheen' };
-    endpointMock.mockResolvedValue(expectedResult);
+    endpointMock.mockResolvedValue({ data: expectedResult });
     const propsCallBack = jest.fn();
     render(<UseAPIWrapper
       endpoint={endpointMock}
