@@ -1,8 +1,9 @@
 import React from 'react';
+import SearchView from 'views/Search';
 
 const App = () => (
   <div>
-    Salu2 desde Fiuzzi
+    <SearchView />
   </div>
 );
 
