@@ -13,13 +13,13 @@ import apiReducer, { startRequest, onRequestComplete, onRequestError } from './r
 const useAPI = (endPoint, initialValue = {}) => {
   const initialState = {
     data: initialValue,
-    isLoading: LOADING_STATES.initial,
+    loading: LOADING_STATES.initial,
     error: '',
   };
 
   const [{
     data,
-    isLoading,
+    loading,
     error,
   }, dispatch] = useReducer(apiReducer(initialValue), initialState);
 
@@ -35,7 +35,7 @@ const useAPI = (endPoint, initialValue = {}) => {
 
   return {
     data,
-    isLoading,
+    loading,
     error,
     call,
   };

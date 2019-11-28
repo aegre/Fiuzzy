@@ -39,21 +39,21 @@ const apiReducer = (initialValue = {}) => (state, action) => {
     case START_REQUEST: {
       return {
         data: initialValue,
-        isLoading: LOADING_STATES.loading,
+        loading: LOADING_STATES.loading,
         error: '',
       };
     }
     case ON_REQUEST_COMPLETE: {
       return {
         data: action.payload,
-        isLoading: LOADING_STATES.loaded,
+        loading: LOADING_STATES.loaded,
         error: '',
       };
     }
     case ON_REQUEST_ERROR: {
       return {
         ...state,
-        isLoading: LOADING_STATES.error,
+        loading: LOADING_STATES.error,
         error: action.payload,
       };
     }

@@ -43,7 +43,7 @@ describe('hooks.useAPI', () => {
       data: expect.anything(),
       call: expect.any(Function),
       error: '',
-      isLoading: LOADING_STATES.loading,
+      loading: LOADING_STATES.loading,
     });
     await wait();
 
@@ -53,7 +53,7 @@ describe('hooks.useAPI', () => {
       data: expectedResult,
       call: expect.any(Function),
       error: '',
-      isLoading: LOADING_STATES.loaded,
+      loading: LOADING_STATES.loaded,
     });
   });
 
@@ -71,7 +71,7 @@ describe('hooks.useAPI', () => {
       data: expectedInitialValue,
       call: expect.any(Function),
       error: '',
-      isLoading: LOADING_STATES.initial,
+      loading: LOADING_STATES.initial,
     });
   });
 
@@ -93,7 +93,7 @@ describe('hooks.useAPI', () => {
       data: expect.anything(),
       call: expect.any(Function),
       error,
-      isLoading: LOADING_STATES.error,
+      loading: LOADING_STATES.error,
     });
   });
 });
