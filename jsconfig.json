@@ -5,7 +5,6 @@
     "module": "es2015",
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "checkJs": true,
     "noEmit": true,
     "strict": false,
     "noImplicitThis": true,

@@ -1,10 +1,11 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import SearchView from 'views/Search';
 
 const App = () => (
-  <div>
+  <BrowserRouter>
     <SearchView />
-  </div>
+  </BrowserRouter>
 );
 
 export default App;
