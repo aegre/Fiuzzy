@@ -10,7 +10,7 @@ import apiReducer, { startRequest, onRequestComplete, onRequestError } from './r
  * @param {function} endPoint This should be a pr
  * @param {*} [initialValue] The initial value
  */
-const useAPI = (endPoint, initialValue = {}) => {
+const useAPI = (endPoint, initialValue = {}, formatFunction = (data) => data) => {
   const initialState = {
     data: initialValue,
     loading: LOADING_STATES.initial,
@@ -27,7 +27,7 @@ const useAPI = (endPoint, initialValue = {}) => {
     try {
       dispatch(startRequest);
       const { data: responseData } = await endPoint(params);
-      dispatch(onRequestComplete(responseData));
+      dispatch(onRequestComplete(formatFunction(responseData)));
     } catch (err) {
       dispatch(onRequestError(err));
     }

@@ -13,9 +13,14 @@ import LOADING_STATES from 'consts/loadingStates';
  * @param {Props} props
  */
 const UseAPIWrapper = ({
-  propsCallBack, endpoint, initialValue = {}, params = undefined, shouldCall = true,
+  propsCallBack,
+  endpoint,
+  formatFunction = undefined,
+  initialValue = {},
+  params = undefined,
+  shouldCall = true,
 }) => {
-  const apiState = useAPI(endpoint, initialValue);
+  const apiState = useAPI(endpoint, initialValue, formatFunction);
   useEffect(() => {
     if (shouldCall) {
       apiState.call(params);
@@ -94,6 +99,37 @@ describe('hooks.useAPI', () => {
       call: expect.any(Function),
       error,
       loading: LOADING_STATES.error,
+    });
+  });
+
+  test('Is calling the format function', async () => {
+    const resolvedValue = { name: 'pusheen' };
+
+    const formatFunction = (value) => value.name;
+
+    endpointMock.mockResolvedValue({ data: resolvedValue });
+    const propsCallBack = jest.fn();
+    render(<UseAPIWrapper
+      endpoint={endpointMock}
+      propsCallBack={propsCallBack}
+      formatFunction={formatFunction}
+    />);
+
+    expect(propsCallBack).toHaveBeenLastCalledWith({
+      data: expect.anything(),
+      call: expect.any(Function),
+      error: '',
+      loading: LOADING_STATES.loading,
+    });
+    await wait();
+
+    expect(endpointMock).toHaveBeenCalledTimes(1);
+
+    expect(propsCallBack).toHaveBeenLastCalledWith({
+      data: resolvedValue.name,
+      call: expect.any(Function),
+      error: '',
+      loading: LOADING_STATES.loaded,
     });
   });
 });
