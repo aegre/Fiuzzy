@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { parse } from 'query-string';
 
 /**
  * Component that does all the logic for the search
@@ -7,7 +8,9 @@ import { useHistory, useLocation } from 'react-router-dom';
  */
 const SearchForm = () => {
   const { push } = useHistory();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+
+  const { search: searchText } = parse(search);
 
   const changeSearch = useCallback(
     /**
@@ -20,7 +23,7 @@ const SearchForm = () => {
     }, [push, pathname],
   );
   return (
-    <input onChange={changeSearch} />
+    <input onChange={changeSearch} value={searchText} />
   );
 };
 
