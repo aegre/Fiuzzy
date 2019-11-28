@@ -7,8 +7,8 @@ import LOADING_STATES from 'consts/loadingStates';
  * @typedef {Object} Props
  * @property {function} propsCallBack The callback function used to assert the props in the hook
  * @property {function} endpoint The endpoint method, this should be a mock of a promise
- * @property {[array]} params List of params to call the endpoint
- * @property {[boolean]} shouldCall boolean determines if we should call the method in the test
+ * @property {array} [params] List of params to call the endpoint
+ * @property {boolean} [shouldCall] boolean determines if we should call the method in the test
  * Custom component to test the useApi hook
  * @param {Props} props
  */
