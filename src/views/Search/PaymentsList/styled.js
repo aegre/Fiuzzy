@@ -24,4 +24,5 @@ export const StyledListContainer = styled.ul`
   margin: 0;
   padding: 0;
   magint-top: var(--space-300);
+  height: 70vh;
 `;

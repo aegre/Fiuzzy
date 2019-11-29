@@ -10,6 +10,7 @@ import fuzzySearch from 'utils/fuzzySearch';
 import Loading from 'components/Loading';
 import { paymentPropTypes } from './consts';
 import { StyledPlaceHolder, StyledListContainer, StyledElementCounter } from './styled';
+import PaymentListElement from './PaymentListElement';
 
 export const getElementId = ({ date, cardLastFour }) => (
   `${date}${cardLastFour}`
@@ -50,14 +51,17 @@ const PaymentsList = ({ payments, loading }) => {
     <>
       <StyledElementCounter>{`Total: ${paymentsList.length}`}</StyledElementCounter>
       <StyledListContainer>
-
         {
         paymentsList.map((payment) => {
           const elementId = getElementId(payment);
           return (
-            <li key={elementId} data-testid={elementId}>
-              {`${payment.amount} - ${payment.date} - ${payment.cardLastFour}`}
-            </li>
+            <PaymentListElement
+              key={elementId}
+              elementId={elementId}
+              amount={payment.amount}
+              date={payment.date}
+              cardLastFour={payment.cardLastFour}
+            />
           );
         })
       }
