@@ -9,6 +9,10 @@ import LOADING_STATES from 'consts/loadingStates';
 import fuzzySearch from 'utils/fuzzySearch';
 import { paymentPropTypes } from './consts';
 
+export const getElementId = ({ date, cardLastFour }) => (
+  `${date}${cardLastFour}`
+);
+
 const PaymentsList = ({ payments, loading }) => {
   const [paymentsList, setPaymentsList] = useState([]);
 
@@ -24,22 +28,25 @@ const PaymentsList = ({ payments, loading }) => {
 
 
   if (loading === LOADING_STATES.initial || loading === LOADING_STATES.loading) {
-    return <span>Cargando</span>;
+    return <span data-testid="payments-list-loading">Cargando</span>;
   }
 
   if (loading === LOADING_STATES.loaded && paymentsList.length === 0) {
-    return <span>No se encontraron elementos</span>;
+    return <span data-testid="payments-list-not-found">No se encontraron elementos</span>;
   }
   return (
     <>
       <span>{`elementos: ${paymentsList.length}`}</span>
       <ul>
         {
-        paymentsList.map((payment) => (
-          <li key={`${payment.date}${payment.cardLastFour}`}>
-            {`${payment.amount} - ${payment.date} - ${payment.cardLastFour}`}
-          </li>
-        ))
+        paymentsList.map((payment) => {
+          const elementId = getElementId(payment);
+          return (
+            <li key={elementId} data-testid={elementId}>
+              {`${payment.amount} - ${payment.date} - ${payment.cardLastFour}`}
+            </li>
+          );
+        })
       }
       </ul>
     </>
