@@ -16,11 +16,11 @@ const PaymentsList = ({ payments, loading }) => {
   const { search: searchText } = parse(search);
   useEffect(() => {
     if (searchText) {
-      setPaymentsList(payments.filter(fuzzySearch, searchText));
+      setPaymentsList(payments.filter((payment) => fuzzySearch(payment, searchText)));
     } else {
       setPaymentsList(payments);
     }
-  }, [payments, search]);
+  }, [payments, searchText]);
 
 
   if (loading === LOADING_STATES.initial || loading === LOADING_STATES.loading) {
