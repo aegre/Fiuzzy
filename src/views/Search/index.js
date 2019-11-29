@@ -3,6 +3,7 @@ import useAPI from 'hooks/useAPI';
 import API from 'api';
 import SearchForm from './SearchForm';
 import PaymentsList from './PaymentsList';
+import StyledSearchView from './styled';
 
 export const formatPayments = (payments) => payments.map((payment) => ({
   amount: payment.amount,
@@ -18,10 +19,10 @@ const SearchView = () => {
   }, [call]);
 
   return (
-    <section>
+    <StyledSearchView>
       <SearchForm />
       <PaymentsList payments={data} loading={loading} />
-    </section>
+    </StyledSearchView>
   );
 };
 
