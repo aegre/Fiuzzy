@@ -9,13 +9,10 @@ const StyledContainer = styled.div`
   max-width: var(--max-app-width);
   margin: auto;
   
-  ${mediaQueries.desktop`
-    margin: 0 var(--space-600);
+  ${mediaQueries.tablet`
+    margin: 0 var(--space-200);
   `}
 
-  ${mediaQueries.mobile`
-    margin: 0 var(--space-400);
-  `}
 `;
 
 const Container = ({ className, children }) => (

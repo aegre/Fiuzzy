@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
   --space-800: 120px;
   --space-900: 160px;
 
-  --max-app-width: 1280px;
+  --max-app-width: 980px;
 }
 
 body {
