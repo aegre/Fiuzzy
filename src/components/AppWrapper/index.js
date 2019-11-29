@@ -44,7 +44,6 @@ const AppWrapper = ({ children }) => (
     <GlobalStyle />
     <Helmet>
       <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-      <script src="https://kit.fontawesome.com/36f1045d8e.js" crossOrigin="anonymous" />
     </Helmet>
     {children}
   </>

@@ -9,7 +9,7 @@ import StyledIcon from './styled';
 
 const Icon = ({ className, icon, color }) => (
   <StyledIcon
-    className={classNames(`fas fa-${icon}`, className)}
+    className={classNames(`fa fa-${icon}`, className)}
     color={color}
     role="img"
     aria-label={icon}

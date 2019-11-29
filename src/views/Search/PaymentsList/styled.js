@@ -12,6 +12,13 @@ export const StyledPlaceHolder = styled.span`
   }
 `;
 
-export const StyledNotFoundPlaceHolder = styled.span`
+export const StyledElementCounter = styled.span`
+  margin-top: var(--space-300);
+  text-align: right;
+  font-size: .75rem;
+`;
 
+export const StyledListContainer = styled.ul`
+  overflow: auto;
+  magint-top: var(--space-300);
 `;

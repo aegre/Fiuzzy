@@ -1,6 +1,11 @@
+// Libraries
 import React, { useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { parse } from 'query-string';
+
+// Components
+import Icon from 'components/Icon';
+import { StyledSearchInputContainer, StyledSearchInput } from './styled';
 
 /**
  * Component that does all the logic for the search
@@ -23,11 +28,15 @@ const SearchForm = () => {
     }, [push, pathname],
   );
   return (
-    <input
-      data-testid="fiuzzy-search-input"
-      onChange={changeSearch}
-      value={searchText}
-    />
+    <StyledSearchInputContainer>
+      <Icon icon="search" />
+      <StyledSearchInput
+        data-testid="fiuzzy-search-input"
+        onChange={changeSearch}
+        value={searchText}
+        placeholder="Buscar"
+      />
+    </StyledSearchInputContainer>
   );
 };
 
