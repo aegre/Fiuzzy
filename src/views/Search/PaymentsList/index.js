@@ -26,16 +26,23 @@ const PaymentsList = ({ payments, loading }) => {
   if (loading === LOADING_STATES.initial || loading === LOADING_STATES.loading) {
     return <span>Cargando</span>;
   }
+
+  if (loading === LOADING_STATES.loaded && paymentsList.length === 0) {
+    return <span>No se encontraron elementos</span>;
+  }
   return (
-    <ul>
-      {
+    <>
+      <span>{`elementos: ${paymentsList.length}`}</span>
+      <ul>
+        {
         paymentsList.map((payment) => (
           <li key={`${payment.date}${payment.cardLastFour}`}>
             {`${payment.amount} - ${payment.date} - ${payment.cardLastFour}`}
           </li>
         ))
       }
-    </ul>
+      </ul>
+    </>
   );
 };
 
