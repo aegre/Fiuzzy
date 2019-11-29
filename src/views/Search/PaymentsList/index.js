@@ -7,7 +7,9 @@ import { parse } from 'query-string';
 // Components
 import LOADING_STATES from 'consts/loadingStates';
 import fuzzySearch from 'utils/fuzzySearch';
+import Loading from 'components/Loading';
 import { paymentPropTypes } from './consts';
+import { StyledPlaceHolder } from './styled';
 
 export const getElementId = ({ date, cardLastFour }) => (
   `${date}${cardLastFour}`
@@ -28,11 +30,21 @@ const PaymentsList = ({ payments, loading }) => {
 
 
   if (loading === LOADING_STATES.initial || loading === LOADING_STATES.loading) {
-    return <span data-testid="payments-list-loading">Cargando</span>;
+    return (
+      <StyledPlaceHolder data-testid="payments-list-loading">
+        <Loading />
+        Cargando
+      </StyledPlaceHolder>
+    );
   }
 
   if (loading === LOADING_STATES.loaded && paymentsList.length === 0) {
-    return <span data-testid="payments-list-not-found">No se encontraron elementos</span>;
+    return (
+      <StyledPlaceHolder data-testid="payments-list-not-found">
+        <h3>Lo sentimos, no se encontraron elementos</h3>
+        <span role="img" aria-label="Face with cold sweat">&#x1F613;</span>
+      </StyledPlaceHolder>
+    );
   }
   return (
     <>

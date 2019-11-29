@@ -9,9 +9,9 @@ const GlobalStyle = createGlobalStyle`
   --family-sans-serif: 'Roboto', sans-serif; 
 
   // Main colors
-  --primary-color: #75d7ef;
-  --secondary-color: #506ac3;
-  --terciary-color: #ea6297;
+  --primary-color: #03aee6;
+  --secondary-color: #2c0184;
+  --terciary-color: #fd4191;
   --text-color: #949494;
   --text-color--light: #c9c9c9;
 
@@ -44,6 +44,7 @@ const AppWrapper = ({ children }) => (
     <GlobalStyle />
     <Helmet>
       <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+      <script src="https://kit.fontawesome.com/36f1045d8e.js" crossOrigin="anonymous" />
     </Helmet>
     {children}
   </>
