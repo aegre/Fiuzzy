@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import formatMoney from 'utils/formatMoney';
 import { StyledPaymentElement, StyledInfoSection, StyledAmount } from './styled';
 
 const PaymentListElement = ({
@@ -12,7 +13,7 @@ const PaymentListElement = ({
     </StyledInfoSection>
     <StyledAmount>
       <h1>
-        {amount}
+        {formatMoney(amount)}
       </h1>
     </StyledAmount>
   </StyledPaymentElement>
