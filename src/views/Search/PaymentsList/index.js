@@ -8,6 +8,7 @@ import { parse } from 'query-string';
 import LOADING_STATES from 'consts/loadingStates';
 import fuzzySearch from 'utils/fuzzySearch';
 import Loading from 'components/Loading';
+import stringToDate from 'utils/stringToDate';
 import { paymentPropTypes } from './consts';
 import { StyledPlaceHolder, StyledListContainer, StyledElementCounter } from './styled';
 import PaymentListElement from './PaymentListElement';
@@ -16,6 +17,9 @@ export const getElementId = ({ date, cardLastFour }) => (
   `${date}${cardLastFour}`
 );
 
+const sortByDate = (first,
+  second) => stringToDate(second.date).getTime() - stringToDate(first.date).getTime();
+
 const PaymentsList = ({ payments, loading }) => {
   const [paymentsList, setPaymentsList] = useState([]);
 
@@ -23,9 +27,13 @@ const PaymentsList = ({ payments, loading }) => {
   const { search: searchText } = parse(search);
   useEffect(() => {
     if (searchText) {
-      setPaymentsList(payments.filter((payment) => fuzzySearch(payment, searchText)));
+      const filteredPayments = payments.filter((payment) => fuzzySearch(payment, searchText));
+
+      setPaymentsList(filteredPayments.sort(
+        sortByDate,
+      ));
     } else {
-      setPaymentsList(payments);
+      setPaymentsList(payments.sort(sortByDate));
     }
   }, [payments, searchText]);
 
