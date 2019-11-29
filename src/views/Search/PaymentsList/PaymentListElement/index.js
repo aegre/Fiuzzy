@@ -1,6 +1,11 @@
+// Libraries
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// Components
 import formatMoney from 'utils/formatMoney';
+import formatDate from 'utils/formatDate';
+import stringToDate from 'utils/stringToDate';
 import { StyledPaymentElement, StyledInfoSection, StyledAmount } from './styled';
 
 const PaymentListElement = ({
@@ -9,7 +14,7 @@ const PaymentListElement = ({
   <StyledPaymentElement data-testid={elementId}>
     <StyledInfoSection>
       <h2>{`**** **** **** ${cardLastFour}`}</h2>
-      <small>{date}</small>
+      <small>{formatDate(stringToDate(date))}</small>
     </StyledInfoSection>
     <StyledAmount>
       <h1>
