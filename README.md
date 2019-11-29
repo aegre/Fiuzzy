@@ -11,7 +11,7 @@ The project uses thecnologies like
 - [husky](https://github.com/typicode/husky)
 - [heroku](https://www.heroku.com/)
 
-You can see a live runing preview [here]().
+You can see a live runing preview [here](https://fiuzzy.herokuapp.com/).
 
 ## How to run it?
 
