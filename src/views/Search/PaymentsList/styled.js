@@ -20,5 +20,8 @@ export const StyledElementCounter = styled.span`
 
 export const StyledListContainer = styled.ul`
   overflow: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   magint-top: var(--space-300);
 `;

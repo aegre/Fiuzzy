@@ -23,6 +23,7 @@ export const StyledSearchInputContainer = styled.div`
   padding: var(--space-200);
   align-items: center;
   border-radius: 8px;
+  margin: auto;
 
   ${StyledIcon} {
     height: auto;
